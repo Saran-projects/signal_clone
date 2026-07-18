@@ -114,10 +114,10 @@ export default function MessageBubble({
             <div className="px-4 py-2.5">
               {messageType === "image" ? (
                 <img 
-                  src={`http://localhost:8000${content}`} 
+                  src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${content}`} 
                   alt="Attachment" 
                   className="max-w-[220px] max-h-[300px] object-cover rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => onImageClick?.(`http://localhost:8000${content}`)}
+                  onClick={() => onImageClick?.(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${content}`)}
                 />
               ) : (
                 <p className="whitespace-pre-wrap break-words">{content}</p>

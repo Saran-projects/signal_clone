@@ -3,7 +3,7 @@ import { X, Loader2, Users } from "lucide-react";
 import Avatar from "./Avatar";
 import { getAuthHeaders } from "@/utils/helpers";
 
-const API = "http://localhost:8000";
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 interface NewGroupModalProps {
   onClose: () => void;

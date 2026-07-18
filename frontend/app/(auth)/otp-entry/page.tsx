@@ -3,7 +3,7 @@ import { useEffect, useState, useRef, useCallback, ClipboardEvent, KeyboardEvent
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 
-const API = "http://localhost:8000";
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 const CODE_LEN = 6;
 
 // ─── Dev hint display ──────────────────────────────────────────────────────────

@@ -5,7 +5,7 @@ import Avatar from "./Avatar";
 import NewGroupModal from "./NewGroupModal";
 import { getAuthHeaders } from "@/utils/helpers";
 
-const API = "http://localhost:8000";
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 const COUNTRY_CODES = [
   { label: "🇺🇸 +1",  value: "+1" },

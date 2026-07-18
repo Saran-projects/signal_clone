@@ -67,7 +67,7 @@ export function WebSocketProvider({ children }: { children: ReactNode }) {
     }
 
     setStatus("connecting");
-    const wsUrl = `ws://localhost:8000/ws?token=${encodeURIComponent(token)}`;
+    const wsUrl = `${process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000"}/ws?token=${encodeURIComponent(token)}`;
     const ws = new WebSocket(wsUrl);
     socketRef.current = ws;
 

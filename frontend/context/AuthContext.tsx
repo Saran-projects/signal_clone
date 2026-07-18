@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
-const API = "http://localhost:8000";
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export interface User {
   id: number;

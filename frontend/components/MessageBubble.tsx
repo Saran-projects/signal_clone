@@ -13,7 +13,7 @@ interface MessageBubbleProps {
   time: string;
   senderName?: string;
   isOwn?: boolean;
-  messageType?: "text" | "system";
+  messageType?: "text" | "system" | "image";
   receiptStatus?: "sent" | "delivered" | "read" | "sending";
   replyTo?: {
     id: number;

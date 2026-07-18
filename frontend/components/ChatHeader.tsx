@@ -60,7 +60,7 @@ export default function ChatHeader({
               {name}
             </h2>
             {disappearsAfterSeconds && (
-              <TimerReset className="w-3.5 h-3.5 text-gray-400" title={`Disappearing in ${disappearsAfterSeconds}s`} />
+              <TimerReset className="w-3.5 h-3.5 text-gray-400" />
             )}
           </div>
           <p className="text-[11px] text-gray-400 font-normal">

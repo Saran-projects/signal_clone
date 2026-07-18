@@ -210,8 +210,8 @@ export default function GroupInfoPanel({ conversationId, initialTimer, onClose, 
                         <div className="flex flex-col">
                           <span className="text-[14px] text-text-primary font-medium flex items-center gap-1.5">
                             {m.display_name} {m.user_id === user?.id && <span className="text-text-secondary font-normal">(You)</span>}
-                            {isCreator && <Crown className="w-3.5 h-3.5 text-yellow-500" title="Creator" />}
-                            {isAdmin && <Shield className="w-3.5 h-3.5 text-blue-500" title="Admin" />}
+                            {isCreator && <span title="Creator"><Crown className="w-3.5 h-3.5 text-yellow-500" /></span>}
+                            {isAdmin && <span title="Admin"><Shield className="w-3.5 h-3.5 text-blue-500" /></span>}
                           </span>
                           <span className="text-[12px] text-text-secondary">{m.phone}</span>
                         </div>

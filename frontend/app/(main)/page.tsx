@@ -121,7 +121,7 @@ export default function RootChatPage() {
     try {
       const url = query.trim()
         ? `${API}/conversations/search?q=${encodeURIComponent(query.trim())}`
-        : `${API}/conversations/`;
+        : `${API}/conversations`;
 
       const res = await fetch(url, { headers: getAuthHeaders() });
       if (!res.ok) {
@@ -508,7 +508,7 @@ export default function RootChatPage() {
 
   const handleAddUnknownContact = async (phone: string) => {
     try {
-      const res = await fetch(`${API}/contacts/`, {
+      const res = await fetch(`${API}/contacts`, {
         method: "POST",
         headers: {
           ...getAuthHeaders(),

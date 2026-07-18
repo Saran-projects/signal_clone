@@ -101,7 +101,7 @@ export default function Sidebar({
     setAddingContact(true);
     try {
       const fullPhone = `${addCountryCode}${addPhone.trim()}`;
-      const res = await fetch(`${API}/contacts/`, {
+      const res = await fetch(`${API}/contacts`, {
         method: "POST",
         headers: getAuthHeaders(),
         body: JSON.stringify({ phone: fullPhone }),
@@ -130,7 +130,7 @@ export default function Sidebar({
         throw new Error("Contact phone is missing");
       }
 
-      const res = await fetch(`${API}/conversations/`, {
+      const res = await fetch(`${API}/conversations`, {
         method: "POST",
         headers: getAuthHeaders(),
         body: JSON.stringify({ participant_phone: contact.phone }),

@@ -6,3 +6,5 @@ pydantic-settings
 python-dotenv
 python-multipart
 PyJWT
+psycopg2-binary
+websockets

@@ -13,10 +13,17 @@ from app.auth_deps import get_jwt_secret
 router = APIRouter()
 
 class ConnectionManager:
+    """
+    Manages active WebSocket connections in-memory.
+    Maps a user ID to a list of active WebSocket connections.
+    Note: For horizontal scaling in production, this should be replaced
+    with a Redis Pub/Sub implementation to broadcast across multiple instances.
+    """
     def __init__(self):
         self.active_connections: Dict[int, List[WebSocket]] = defaultdict(list)
 
     async def connect(self, websocket: WebSocket, user_id: int):
+        """Accepts the connection and maps it to the user_id."""
         await websocket.accept()
         self.active_connections[user_id].append(websocket)
 

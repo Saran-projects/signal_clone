@@ -31,6 +31,11 @@ class CompleteProfile(BaseModel):
     avatar_url: str | None = None
 
 def create_access_token(data: dict, expires_delta: timedelta):
+    """
+    Generates a secure JWT token containing the user's ID and phone number.
+    This token is used by both the REST API for Bearer Auth and the WebSocket 
+    for connection authentication.
+    """
     to_encode = data.copy()
     expire = datetime.now(timezone.utc) + expires_delta
     to_encode.update({"exp": int(expire.timestamp())})
@@ -39,6 +44,11 @@ def create_access_token(data: dict, expires_delta: timedelta):
 
 @router.post("/request-otp")
 def request_otp(req: RequestOtp, db: Session = Depends(get_db)):
+    """
+    Handles the first step of authentication. Checks if the phone number
+    is valid and prevents duplicate registrations. If valid, generates 
+    and securely stores an OTP code in the database for verification.
+    """
     if not req.is_valid_phone:
         raise HTTPException(status_code=400, detail="Invalid phone format")
     if req.purpose not in ["register", "login"]:

@@ -33,6 +33,12 @@ async def delete_expired_messages():
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print(f"Dummy OTP for all users: {DUMMY_OTP}")
+    
+    # Auto-create tables in production if they don't exist
+    from app.database import engine
+    from app import models
+    models.Base.metadata.create_all(bind=engine)
+    
     task = asyncio.create_task(delete_expired_messages())
     yield
     task.cancel()

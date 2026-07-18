@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --sidebar-bg: #f2f2f7;
+  --chat-bg: #ffffff;
+  --bubble-incoming: #e5e5ea;
+  --bubble-incoming-text: #000000;
+  --input-bg: #e5e5ea;
+  --border-color: #e5e5ea;
+  --nav-sidebar-bg: #d1d1d6;
+  --text-primary: #111111;
+  --text-secondary: #8e8e93;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --sidebar-bg: #121212;
+  --chat-bg: #0d0d0d;
+  --bubble-incoming: #2C2C2E;
+  --bubble-incoming-text: #ffffff;
+  --input-bg: #2C2C2E;
+  --border-color: #1C1C1E;
+  --nav-sidebar-bg: #1E1E1E;
+  --text-primary: #ffffff;
+  --text-secondary: #8e8e93;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-chat-bg: var(--chat-bg);
+  --color-bubble-incoming: var(--bubble-incoming);
+  --color-bubble-incoming-text: var(--bubble-incoming-text);
+  --color-input-bg: var(--input-bg);
+  --color-border-color: var(--border-color);
+  --color-nav-sidebar-bg: var(--nav-sidebar-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}

@@ -3,7 +3,10 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 import os
 
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./app.db")
+db_url = os.getenv("DATABASE_URL", "sqlite:///./app.db")
+if db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://", 1)
+SQLALCHEMY_DATABASE_URL = db_url
 
 connect_args = {}
 if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):

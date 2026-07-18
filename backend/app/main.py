@@ -45,17 +45,10 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Signal Clone API", lifespan=lifespan)
 
-# Allow frontend to access the API
-frontend_url = os.getenv("FRONTEND_URL")
-origins = ["http://localhost:3000"]
-if frontend_url:
-    origins.append(frontend_url)
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_origin_regex=r"https://.*\.vercel\.app",
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

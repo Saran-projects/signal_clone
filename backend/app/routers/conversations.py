@@ -429,11 +429,10 @@ def create_group(req: CreateGroupRequest, background_tasks: BackgroundTasks, db:
     db.commit()
     
     # Send system message using background task so it gets broadcast to all connected users
-    insert_system_message_bg(
-        background_tasks,
+    background_tasks.add_task(
+        insert_system_message_bg,
         new_conv.id,
-        f"{current_user.display_name} created the group '{req.name}'",
-        db
+        f"{current_user.display_name} created the group '{req.name}'"
     )
     
     return {"id": new_conv.id, "failed_phones": failed_phones}

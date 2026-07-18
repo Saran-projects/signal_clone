@@ -11,7 +11,7 @@ router = APIRouter(prefix="/contacts", tags=["contacts"])
 class AddContactRequest(BaseModel):
     phone: str
 
-@router.get("/")
+@router.get("")
 def get_contacts(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     contacts = db.query(Contact).filter(Contact.owner_id == current_user.id).all()
     result = []
@@ -27,7 +27,7 @@ def get_contacts(db: Session = Depends(get_db), current_user: User = Depends(get
         })
     return result
 
-@router.post("/")
+@router.post("")
 def add_contact(req: AddContactRequest, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     target_user = db.query(User).filter(User.phone == req.phone).first()
     if not target_user:

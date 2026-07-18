@@ -35,7 +35,7 @@ class ReactionRequest(BaseModel):
 class UpdateTimerRequest(BaseModel):
     disappears_after_seconds: Optional[int]
 
-@router.get("/")
+@router.get("")
 def list_conversations(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     participant_rows = db.query(ConversationParticipant).filter(
         ConversationParticipant.user_id == current_user.id
@@ -118,7 +118,7 @@ def list_conversations(db: Session = Depends(get_db), current_user: User = Depen
         
     return result
 
-@router.post("/")
+@router.post("")
 def create_1v1_conversation(req: CreateConversationRequest, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     if req.participant_phone == current_user.phone:
         raise HTTPException(status_code=400, detail="Cannot start conversation with yourself")
